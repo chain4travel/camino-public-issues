@@ -1,6 +1,6 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: Bug Report
+about: Create a bug report to help us improve
 title: ''
 labels: bug
 assignees: ''
@@ -8,29 +8,28 @@ assignees: ''
 ---
 
 **Component**
-The component which contains the bug. For Example: Camino-Node, Application Suite, Wallet, Explorer,... 
+Specify the component where the bug is located, e.g., Camino-Node, Application Suite, Wallet, Explorer.
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe the Bug**
+Provide a clear and concise description of the bug.
 
-**To Reproduce**
-Steps to reproduce the behavior.
+**Steps to Reproduce**
+Detail the steps required to reproduce the observed behavior.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Expected Behavior**
+Describe what you anticipated would happen.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If possible, attach screenshots to help illustrate the issue.
 
 **Logs**
-If applicable, please include the relevant logs that indicate a problem and/or the log directory of your node. By default, this can be found at `~/.caminogo/logs/`.
+If relevant, include any logs that highlight the problem. By default, the log directory for your node can be found at `~/.caminogo/logs/`.
 
 **Metrics**
-If applicable, please include any metrics gathered from your node to assist us in diagnosing the problem.
+If relevant, share any metrics from your node that might help in diagnosing the issue.
 
 **Operating System**
-Which OS you used to reveal the bug.
+Mention the operating system where the bug was encountered.
 
-**Additional context**
-Add any other context about the problem here.
-
+**Additional Context**
+Provide any other pertinent information or context regarding the problem.
