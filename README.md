@@ -5,7 +5,7 @@ feature requests, for multiple projects under the Camino Network umbrella.
 
 ## How to Report an Issue
 
-:no_entry_sign: For **SECURITY VULNERABILITIES**, please refer to the [SECURITY.md](SECURITY.md) file. For bug reports :beetle: or feature requests :sparkles: , follow the steps below.
+:no_entry_sign: For **SECURITY VULNERABILITIES**, please refer to the [SECURITY.md](SECURITY.md) file. For bug reports :lady_beetle: or feature requests :sparkles: , follow the steps below.
 
 1. Navigate to the ["Issues"](https://github.com/chain4travel/camino-public-issues/issues) tab.
 2. Click on "New Issue".
