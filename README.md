@@ -48,7 +48,7 @@ When suggesting a new feature, please provide:
 
 ## Other Important Links
 
-- [Camino Main Repository](https://camino.network)
+- [Camino Network Website](https://camino.network)
 - [Camino Documentation](https://docs.camino.network/)
 - [Camino Discord Server](https://discord.gg/camino)
 - [Camino Twitter](https://twitter.com/camino_network)
