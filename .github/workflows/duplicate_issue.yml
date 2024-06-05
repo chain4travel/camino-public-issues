@@ -1,0 +1,23 @@
+name: Duplicate Issue to Dev Dashboard
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  duplicate_issue:
+    name: duplicate_issue
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout camino-private-issues
+      uses: actions/checkout@v4
+      with:
+        ssh-key: ${{ secrets.SSH_PRIVATE_KEY_CAMINO_PRIVATE_ISSUES }}
+        repository: chain4travel/camino-private-issues
+    - name: create an issue
+      uses: dacbd/create-issue-action@main
+      with:
+        token: ${{ github.token }}
+        title: ${{ github.event.issue.title }}
+        body: ${{ github.event.issue.body }}
+        assignees: mikrub
