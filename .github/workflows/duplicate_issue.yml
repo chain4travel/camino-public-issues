@@ -9,16 +9,9 @@ jobs:
     name: duplicate_issue
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout camino-private-issues
-      uses: actions/checkout@v4
-      with:
-        ssh-key: ${{ secrets.SSH_PRIVATE_KEY_CAMINO_PRIVATE_ISSUES }}
-        repository: chain4travel/camino-private-issues
-    - name: create an issue
-      uses: dacbd/create-issue-action@main
-      with:
-        token: ${{ github.token }}
-        repo: camino-private-issues
-        title: ${{ github.event.issue.title }}
-        body: ${{ github.event.issue.body }}
-        assignees: mikrub
+    - run: |
+          gh issue --repo chain4travel/camino-private-issues \
+            create --title "${{ github.event.issue.title }}" --body $'${{ github.event.issue.body }} \n This issue is related to puclic issue ${{ github.event.issue.url }}' --assignee "mikrub"
+      env:
+        GH_TOKEN: ${{ secrets.GIT_PRIVATE_ISSUES_TOKEN }}
+
