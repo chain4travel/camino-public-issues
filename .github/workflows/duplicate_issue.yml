@@ -18,7 +18,6 @@ jobs:
       uses: dacbd/create-issue-action@main
       with:
         token: ${{ github.token }}
-        org: chain4travel
         repo: camino-private-issues
         title: ${{ github.event.issue.title }}
         body: ${{ github.event.issue.body }}
