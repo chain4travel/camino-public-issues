@@ -11,7 +11,7 @@ jobs:
     steps:
     - run: |
           gh issue --repo chain4travel/camino-private-issues \
-            create --title "${{ github.event.issue.title }}" --body $'${{ github.event.issue.body }} \n This issue is related to puclic issue https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}' --assignee "mikrub"
+            create --title "${{ github.event.issue.title }}" --body $'${{ github.event.issue.body }} \n This issue is related to public issue https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}' --assignee "mikrub"
       env:
         GH_TOKEN: ${{ secrets.GIT_PRIVATE_ISSUES_TOKEN }}
 
