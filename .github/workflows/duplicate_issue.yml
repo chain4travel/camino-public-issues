@@ -10,8 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-          gh issue --repo chain4travel/camino-private-issues \
-            create --title "${{ github.event.issue.title }}" --body $'${{ github.event.issue.body }} \n This issue is related to public issue https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}' --assignee "mikrub" --label "Public Issue"
+        BODY_CONT="<br /> This issue is related to public issue https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}"
+        cat > issue.md<<- EOM
+        ${{ github.event.issue.body }}
+        EOM
+        ISSUE_BODY=$(cat issue.md)
+        cat > title.md<<- EOM
+        ${{ github.event.issue.title }}
+        EOM
+        TITLE=$(cat title.md)
+        BODY=${ISSUE_BODY//['"']/'\"'}
+        gh issue --repo chain4travel/camino-private-issues \
+          create --title "$TITLE" --body "$BODY $BODY_CONT" --assignee "mikrub" --label "Public Issue"
       env:
         GH_TOKEN: ${{ secrets.GIT_PRIVATE_ISSUES_TOKEN }}
 
