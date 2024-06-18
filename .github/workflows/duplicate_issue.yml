@@ -9,10 +9,22 @@ jobs:
     name: duplicate_issue
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        BODY_CONT="<br /> This issue is related to public issue https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}"
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ vars.ISSUES_ACTIONS_APP_ID }}
+        private-key: ${{ secrets.GIT_PRIVATE_ISSUES_APP_PK }}
+        repositories: "camino-private-issues"
+    - name: Generate Private Issue
+      run: |        
         cat > issue.md<<- EOM
         ${{ github.event.issue.body }}
+
+        ---
+
+        This issue is related to public issue:
+        * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
         EOM
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- EOM
@@ -21,7 +33,7 @@ jobs:
         TITLE=$(cat title.md)
         BODY=${ISSUE_BODY//['"']/'\"'}
         gh issue --repo chain4travel/camino-private-issues \
-          create --title "$TITLE" --body "$BODY $BODY_CONT" --assignee "mikrub" --label "Public Issue"
+          create --title "$TITLE" --body "$BODY" --assignee "mikrub" --label "Public Issue"
       env:
-        GH_TOKEN: ${{ secrets.GIT_PRIVATE_ISSUES_TOKEN }}
+        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
