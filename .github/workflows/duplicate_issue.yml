@@ -32,9 +32,17 @@ jobs:
         echo "hiiii 3"
         BODY=${ISSUE_BODY//['"']/'\"'}
         echo "hiiii 4"
-        echo "title=$TITLE" >> $GITHUB_OUTPUT
+        {
+        echo 'title<<EOF'
+        $TITLE
+        echo EOF
+        } >> "$GITHUB_OUTPUT"
         echo "hiiii 5"
-        echo "body=$BODY" >> $GITHUB_OUTPUT
+        {
+        echo 'body<<EOF'
+        $BODY
+        echo EOF
+        } >> "$GITHUB_OUTPUT"
         echo "hiiii 6"
 
     - name: Create Private Issue
