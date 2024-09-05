@@ -13,6 +13,7 @@ jobs:
     - name: Prepare Title and Body
       id: issue-params
       run: |   
+        set -o xtrace
         echo "hiiii 0"
         cat > issue.md<<- 'EOM'
         -${{ github.event.issue.body }}
