@@ -18,7 +18,7 @@ jobs:
         repositories: "camino-private-issues"
     - name: Generate Private Issue
       run: |        
-        cat > issue.md<<- EOM
+        cat > issue.md<<- 'EOM'
         ${{ github.event.issue.body }}
 
         ---
@@ -27,7 +27,7 @@ jobs:
         * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
         EOM
         ISSUE_BODY=$(cat issue.md)
-        cat > title.md<<- EOM
+        cat > title.md<<- 'EOM'
         ${{ github.event.issue.title }}
         EOM
         TITLE=$(cat title.md)
