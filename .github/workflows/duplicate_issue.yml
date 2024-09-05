@@ -33,15 +33,15 @@ jobs:
         BODY=${ISSUE_BODY//['"']/'\"'}
         echo "hiiii 4"
         {
-        echo 'title<<EOF'
+        echo 'title<<EOM'
         $TITLE
-        echo EOF
+        echo EOM
         } >> "$GITHUB_OUTPUT"
         echo "hiiii 5"
         {
-        echo 'body<<EOF'
+        echo 'body<<EOM'
         $BODY
-        echo EOF
+        echo EOM
         } >> "$GITHUB_OUTPUT"
         echo "hiiii 6"
 
