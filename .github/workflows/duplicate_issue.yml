@@ -24,13 +24,18 @@ jobs:
         EOM
         echo "hiiii 1"
         ISSUE_BODY=$(cat issue.md)
-        cat > title.md<<- EOM
+        cat > title.md<<- 'EOM'
         ${{ github.event.issue.title }}
         EOM
+        echo "hiiii 2"
         TITLE=$(cat title.md)
+        echo "hiiii 3"
         BODY=${ISSUE_BODY//['"']/'\"'}
+        echo "hiiii 4"
         echo "title=$TITLE" >> $GITHUB_OUTPUT
+        echo "hiiii 5"
         echo "body=$BODY" >> $GITHUB_OUTPUT
+        echo "hiiii 6"
 
     - name: Create Private Issue
       run: |        
