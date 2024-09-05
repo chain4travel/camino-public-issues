@@ -31,11 +31,11 @@ jobs:
 
         echo "preoutput"
         
-        echo "issue_title<<EOM" >> $GITHUB_OUTPUT
+        echo "issue_title<<'EOM'" >> $GITHUB_OUTPUT
         echo "$TITLE" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
         
-        echo "issue_body<<EOF" >> $GITHUB_OUTPUT        
+        echo "issue_body<<'EOF'" >> $GITHUB_OUTPUT        
         echo "$BODY" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
 
