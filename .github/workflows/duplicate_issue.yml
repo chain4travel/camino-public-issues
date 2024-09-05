@@ -3,7 +3,7 @@ name: Duplicate Issue to Dev Dashboard
 on:
   push:
     branches:
-      - c4t
+      - fix-issue
 
 jobs:
   duplicate_issue:
@@ -20,21 +20,20 @@ jobs:
     - name: Generate Private Issue
       run: |        
         cat > issue.md<<- EOM
-        ${{ github.event.issue.body }}
+        $(env)
 
         ---
 
         This issue is related to public issue:
-        * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
         EOM
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- EOM
-        ${{ github.event.issue.title }}
+        Test Title
         EOM
         TITLE=$(cat title.md)
         BODY=${ISSUE_BODY//['"']/'\"'}
-        gh issue --repo chain4travel/camino-private-issues \
-          create --title "$TITLE" --body "$BODY" --assignee "mikrub" --label "Public Issue"
+        echo "$BODY"
+        echo "TITLE"
       env:
         GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
