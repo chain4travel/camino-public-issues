@@ -32,8 +32,8 @@ jobs:
         EOM
         TITLE=$(cat title.md)
         BODY=${ISSUE_BODY//['"']/'\"'}
-        echo "$BODY"
-        echo "TITLE"
+        echo "body  ${BODY}"
+        echo "title ${TITLE}"
       env:
         GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
