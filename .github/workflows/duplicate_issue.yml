@@ -24,7 +24,7 @@ jobs:
         EOM
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- 'EOM'
-        ${{ github.event.issue.title }}
+        title-mo
         EOM
         export TITLE=$(cat title.md)
         export BODY=${ISSUE_BODY//['"']/'\"'}
@@ -32,6 +32,8 @@ jobs:
         echo "$TITLE" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
         echo "issue_body<<EOM" >> $GITHUB_OUTPUT
+
+        echo "DonnnnEEE"
         echo "$BODY" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
 
