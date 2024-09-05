@@ -34,6 +34,9 @@ jobs:
         echo "issue_body<<EOM" >> $GITHUB_OUTPUT
         echo "$BODY" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
+
+        echo "$BODY"
+        echo "$TITLE"
         
 
     - name: Create Private Issue
