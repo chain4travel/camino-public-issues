@@ -15,7 +15,7 @@ jobs:
       run: |   
         set -o xtrace
         cat > issue.md<<- 'EOM'
-        -${{ github.event.issue.body }}
+        -$(echo Mooo)
 
         ---
 
