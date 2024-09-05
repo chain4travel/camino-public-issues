@@ -29,7 +29,7 @@ jobs:
         export TITLE=$(cat title.md)
         export BODY=${ISSUE_BODY//['"']/'\"'}
 
-        echo "DonnnnEEE"
+        echo "preoutput
         
         echo "issue_title<<EOM" >> $GITHUB_OUTPUT
         echo "$TITLE" >> $GITHUB_OUTPUT
@@ -39,9 +39,11 @@ jobs:
         echo "$BODY" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
 
+        echo "DonnnnEEE"
+
         echo "$BODY"
         echo "$TITLE"
-        echo $GITHUB_OUTPUT
+        cat $GITHUB_OUTPUT
         
 
     - name: Create Private Issue
