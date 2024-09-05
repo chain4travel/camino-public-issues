@@ -10,30 +10,29 @@ jobs:
     name: duplicate_issue
     runs-on: ubuntu-latest
     steps:
-    - name: Generate a token
-      id: generate-token
-      uses: actions/create-github-app-token@v1
-      with:
-        app-id: ${{ vars.ISSUES_ACTIONS_APP_ID }}
-        private-key: ${{ secrets.GIT_PRIVATE_ISSUES_APP_PK }}
-        repositories: "camino-private-issues"
-    - name: Generate Private Issue
-      run: |        
-        cat > issue.md<<- EOM
-        $(env)
+    - name: Prepare Title and Body
+      id: issue-params
+      run: |   
+        echo "hiiii 0"
+        cat > issue.md<<- 'EOM'
+        ${{ github.event.issue.body }}
 
         ---
 
         This issue is related to public issue:
+        * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
         EOM
+        echo "hiiii 1"
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- EOM
-        Test Title
+        ${{ github.event.issue.title }}
         EOM
         TITLE=$(cat title.md)
         BODY=${ISSUE_BODY//['"']/'\"'}
-        echo "body  ${BODY}"
-        echo "title ${TITLE}"
-      env:
-        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        echo "title=$TITLE" >> $GITHUB_OUTPUT
+        echo "body=$BODY" >> $GITHUB_OUTPUT
 
+    - name: Create Private Issue
+      run: |        
+        echo "${{ steps.issue-params.outputs.title }}"
+        echo "${{ steps.issue-params.outputs.body }}"
