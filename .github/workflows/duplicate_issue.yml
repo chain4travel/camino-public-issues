@@ -45,6 +45,6 @@ jobs:
 
     - name: Create Private Issue
       run: |        
-        echo "${{ steps.issue-params.outputs..issue_title }}"
-        echo "${{ steps.issue-params.outputs..issue_body }}"
+        echo "${{ steps.issue-params.outputs.issue_title }}"
+        echo "${{ steps.issue-params.outputs.issue_body }}"
 
