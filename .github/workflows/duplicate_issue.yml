@@ -28,17 +28,20 @@ jobs:
         EOM
         export TITLE=$(cat title.md)
         export BODY=${ISSUE_BODY//['"']/'\"'}
+
+        echo "DonnnnEEE"
+        
         echo "issue_title<<EOM" >> $GITHUB_OUTPUT
         echo "$TITLE" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
-        echo "issue_body<<EOM" >> $GITHUB_OUTPUT
-
-        echo "DonnnnEEE"
+        
+        echo "issue_body<<EOF" >> $GITHUB_OUTPUT        
         echo "$BODY" >> $GITHUB_OUTPUT
-        echo "EOM" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
 
         echo "$BODY"
         echo "$TITLE"
+        echo $GITHUB_OUTPUT
         
 
     - name: Create Private Issue
