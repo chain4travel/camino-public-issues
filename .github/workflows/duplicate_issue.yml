@@ -14,7 +14,6 @@ jobs:
       id: issue-params
       run: |   
         set -o xtrace
-        echo "hiiii 0"
         cat > issue.md<<- 'EOM'
         -${{ github.event.issue.body }}
 
@@ -23,24 +22,18 @@ jobs:
         This issue is related to public issue:
         * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
         EOM
-        echo "hiiii 1"
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- 'EOM'
         ${{ github.event.issue.title }}
         EOM
-        echo "hiiii 2"
         export TITLE=$(cat title.md)
-        echo "hiiii 3"
         export BODY=${ISSUE_BODY//['"']/'\"'}
-        echo "hiiii 4"
         echo "issue_title<<EOM" >> $GITHUB_OUTPUT
         echo "$TITLE" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
-        echo "hiiii 5"
         echo "issue_body<<EOM" >> $GITHUB_OUTPUT
         echo "$BODY" >> $GITHUB_OUTPUT
         echo "EOM" >> $GITHUB_OUTPUT
-        echo "hiiii 6"
         
 
     - name: Create Private Issue
