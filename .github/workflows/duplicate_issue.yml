@@ -33,19 +33,18 @@ jobs:
         echo "hiiii 3"
         export BODY=${ISSUE_BODY//['"']/'\"'}
         echo "hiiii 4"
-        {
-        echo "issue_title<<EOM" >> $GITHUB_ENV
-        echo "$TITLE" >> $GITHUB_ENV
-        echo "EOM" >> $GITHUB_ENV
+        echo "issue_title<<EOM" >> $GITHUB_OUTPUT
+        echo "$TITLE" >> $GITHUB_OUTPUT
+        echo "EOM" >> $GITHUB_OUTPUT
         echo "hiiii 5"
-        echo "issue_body<<EOM" >> $GITHUB_ENV
-        echo "$BODY" >> $GITHUB_ENV
-        echo "EOM" >> $GITHUB_ENV
+        echo "issue_body<<EOM" >> $GITHUB_OUTPUT
+        echo "$BODY" >> $GITHUB_OUTPUT
+        echo "EOM" >> $GITHUB_OUTPUT
         echo "hiiii 6"
         
 
     - name: Create Private Issue
       run: |        
-        echo "${{ env.issue_title }}"
-        echo "${{ env.issue_body }}"
+        echo "${{ steps.issue-params.outputs..issue_title }}"
+        echo "${{ steps.issue-params.outputs..issue_body }}"
 
