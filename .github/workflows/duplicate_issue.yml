@@ -30,7 +30,8 @@ jobs:
         cat > title.md<<- EOM
         $PUBLIC_TITLE
         EOM
-        TITLE=$(cat title.md)
+        ISSUE_TITLE=$(cat title.md)
+        TITLE=${ISSUE_TITLE//['"']/'\"'}
         BODY=${ISSUE_BODY//['"']/'\"'}
         gh issue --repo chain4travel/camino-private-issues \
           create --title "$TITLE" --body "$BODY" --assignee "mikrub" --label "Public Issue"
