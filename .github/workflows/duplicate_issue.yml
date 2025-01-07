@@ -19,16 +19,16 @@ jobs:
     - name: Generate Private Issue
       run: |        
         cat > issue.md<<- 'EOM'
-        ${{ github.event.issue.body }}
+        $PUBLIC_BODY
 
         ---
 
         This issue is related to public issue:
-        * https://github.com/chain4travel/camino-public-issues/issues/${{ github.event.issue.number }}
+        * https://github.com/chain4travel/camino-public-issues/issues/$ISSUE_NUMBER
         EOM
         ISSUE_BODY=$(cat issue.md)
         cat > title.md<<- 'EOM'
-        ${{ github.event.issue.title }}
+        $PUBLIC_TITLE
         EOM
         TITLE=$(cat title.md)
         BODY=${ISSUE_BODY//['"']/'\"'}
@@ -36,4 +36,7 @@ jobs:
           create --title "$TITLE" --body "$BODY" --assignee "mikrub" --label "Public Issue"
       env:
         GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        PUBLIC_TITLE: ${{ github.event.issue.title }}
+        PUBLIC_BODY: ${{ github.event.issue.body }}
+        ISSUE_NUMBER: ${{ github.event.issue.number }}
 
